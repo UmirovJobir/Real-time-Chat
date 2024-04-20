@@ -3,5 +3,6 @@ django-cleanup
 django-allauth
 django-htmx
 channels[daphne]
+channels-redis
 pillow
 python-dotenv
