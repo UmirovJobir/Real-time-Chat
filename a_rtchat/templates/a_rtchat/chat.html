@@ -10,7 +10,7 @@
         <div id='chat_container' class="overflow-y-auto grow">
             <ul id='chat_messages' class="flex flex-col justify-end gap-2 p-4">
                 {% for message in chat_messages reversed %}
-                
+                {% include 'a_rtchat/chat_message.html' %}
                 {% endfor %}
             </ul>
         </div>
@@ -19,7 +19,8 @@
                 <form id="chat_message_form" method='POST' class="w-full"
                     hx-post="{% url 'home' %}"
                     hx-target="#chat_messages"
-                    hx-swap="beforeend">
+                    hx-swap="beforeend"
+                    _="on htmx:afterRequest reset() me">
                     {% csrf_token %}
                     {{ form }}
                 </form>
@@ -28,4 +29,14 @@
     </div>
 </wrapper>
 
+{% endblock %}
+
+{% block javascript %}
+<script>
+    function scrollToButtom() {
+        const container = document.getElementById('chat_container');
+        container.scrollTop = container.scrollHeight
+    }
+    scrollToButtom()
+</script>
 {% endblock %}
