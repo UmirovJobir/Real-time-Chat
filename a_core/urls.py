@@ -24,12 +24,14 @@ from a_home.views import *
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('accounts/', include('allauth.urls')),
-    path('', include('a_rtchat.urls')),
+    path('home/', include('a_rtchat.urls')),
     # path('', home_view, name="home"),
     path('profile/', include('a_users.urls')),
     path('@<username>/', profile_view, name="profile"),
 ]
 
 # Only used in development
+urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+urlpatterns += [re_path(r'^backend/media/(?P<path>.*)$', serve, {'document_root': settings.MEDIA_ROOT,}),]
 
