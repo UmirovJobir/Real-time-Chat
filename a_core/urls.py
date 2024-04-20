@@ -19,7 +19,7 @@ from django.urls import path, include
 from django.conf.urls.static import static
 from django.conf import settings
 from a_users.views import profile_view
-from a_home.views import *
+from a_home.views import home_view
 
 urlpatterns = [
     path('admin/', admin.site.urls),
