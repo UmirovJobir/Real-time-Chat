@@ -4,7 +4,7 @@
 echo "Apply database migrations"
 python3 manage.py makemigrations
 python3 manage.py migrate
-daphne a_core:asgi:application -b 0.0.0.0 -p 5000
+daphne a_core.asgi:application -b 0.0.0.0 -p 5000
 
 # gunicorn imodels.wsgi:application --bind 0.0.0.0:8000 --timeout 300
 
