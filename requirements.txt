@@ -2,5 +2,6 @@ Django
 django-cleanup
 django-allauth
 django-htmx
+channels[daphne]
 pillow
 python-dotenv
