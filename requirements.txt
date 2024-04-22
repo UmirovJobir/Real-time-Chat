@@ -6,3 +6,4 @@ channels[daphne]
 channels-redis
 pillow
 python-dotenv
+shortuuid==1.0.13
