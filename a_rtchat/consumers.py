@@ -3,7 +3,7 @@ from django.shortcuts import get_object_or_404
 from django.template.loader import render_to_string
 from asgiref.sync import async_to_sync
 import json
-from .models import ChatGroup, GroupMessage
+from .models import ChatGroup, GroupMessage, UserChannel
 
 
 class ChatroomConsumer(WebsocketConsumer):
@@ -21,12 +21,22 @@ class ChatroomConsumer(WebsocketConsumer):
             self.chatroom.users_online.add(self.user)
             self.update_online_count()
         
+        # if self.chatroom.groupchat_name:
+        #     UserChannel.objects.get_or_create(
+        #         member = self.user, 
+        #         group = self.chatroom,
+        #         channel = self.channel_name 
+        #     )
+        
         self.accept()
     
     def disconnect(self, close_code):
         async_to_sync(self.channel_layer.group_discard)(
             self.chatroom_name, self.channel_name
         )
+        
+        # user_channel = UserChannel.objects.get(channel=self.channel_name )
+        # user_channel.delete()
         
         # remove and update online users
         if self.user in self.chatroom.users_online.all():
