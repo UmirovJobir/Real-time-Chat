@@ -1,7 +1,6 @@
 from django.contrib import admin
-from .models import ChatGroup, GroupMessage, UserChannel
+from .models import ChatGroup, GroupMessage
 
 
 admin.site.register(ChatGroup)
 admin.site.register(GroupMessage)
-admin.site.register(UserChannel)

@@ -6,7 +6,7 @@ from django.http import Http404
 from channels.layers import get_channel_layer
 from asgiref.sync import async_to_sync
 
-from .models import ChatGroup, GroupMessage, UserChannel
+from .models import ChatGroup, GroupMessage
 from .forms import ChatmessageCreateForm, NewGroupForm, ChatroomEditForm
 
 
